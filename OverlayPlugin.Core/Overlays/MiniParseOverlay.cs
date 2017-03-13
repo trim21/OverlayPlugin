@@ -27,16 +27,7 @@ namespace RainbowMage.OverlayPlugin.Overlays
         public MiniParseOverlay(MiniParseOverlayConfig config)
             : base(config, config.Name)
         {
-            Log(LogLevel.Trace, "asdf");
-            LogLineInit = new Timer();
-            LogLineInit.Tick += (sender, e) =>
-            {
-                Log(LogLevel.Trace, "Start listening logline");
-                ActGlobals.oFormActMain.BeforeLogLineRead += LogLineReader;
-                LogLineInit.Enabled = false;
-            };
-            LogLineInit.Interval = 3000;
-            LogLineInit.Enabled = true;
+            ActGlobals.oFormActMain.BeforeLogLineRead += LogLineReader;
         }
 
         public override void Navigate(string url)
