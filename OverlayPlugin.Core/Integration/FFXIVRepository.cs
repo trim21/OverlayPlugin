@@ -57,6 +57,13 @@ namespace RainbowMage.OverlayPlugin
         Timer
     }
 
+    public enum GameRegion
+    {
+        Global = 1,
+        Chinese = 2,
+        Korean = 3
+    }
+
     class FFXIVRepository
     {
         private readonly ILogger logger;
@@ -64,6 +71,7 @@ namespace RainbowMage.OverlayPlugin
         private IDataSubscription subscription;
         private MethodInfo logOutputWriteLineFunc;
         private object logOutput;
+        private Func<long, DateTime> machinaEpochToDateTimeWrapper;
 
         public FFXIVRepository(TinyIoCContainer container)
         {
@@ -301,12 +309,45 @@ namespace RainbowMage.OverlayPlugin
             }
         }
 
-        [MethodImpl(MethodImplOptions.NoInlining)]
-        internal bool WriteLogLineImpl(uint ID, string line)
+        public GameRegion GetMachinaRegion()
         {
-            // TODO: re-enable this once https://github.com/anoyetta/ACT.Hojoring/issues/366 is fixed.
-            return false;
+            try
+            {
+                var mach = Assembly.Load("Machina.FFXIV");
+                var opcode_manager_type = mach.GetType("Machina.FFXIV.Headers.Opcodes.OpcodeManager");
+                var opcode_manager = opcode_manager_type.GetProperty("Instance").GetValue(null);
+                var machina_region = opcode_manager_type.GetProperty("GameRegion").GetValue(opcode_manager).ToString();
 
+                if (Enum.TryParse<GameRegion>(machina_region, out var region))
+                    return region;
+            }
+            catch (Exception) { }
+            return GameRegion.Global;
+        }
+
+        public DateTime EpochToDateTime(long epoch)
+        {
+            if (machinaEpochToDateTimeWrapper == null)
+            {
+                try
+                {
+                    var mach = Assembly.Load("Machina");
+                    var conversionUtility = mach.GetType("Machina.Infrastructure.ConversionUtility");
+                    var epochToDateTime = conversionUtility.GetMethod("EpochToDateTime");
+                    machinaEpochToDateTimeWrapper = (e) => {
+                        return (DateTime)epochToDateTime.Invoke(null, new object[] { e });
+                    };
+                }
+                catch (Exception e) {
+                    logger.Log(LogLevel.Error, e.ToString());
+                }
+            }
+            return machinaEpochToDateTimeWrapper(epoch).ToLocalTime();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        internal bool WriteLogLineImpl(uint ID, DateTime timestamp, string line)
+        {
             if (logOutputWriteLineFunc == null)
             {
                 var plugin = GetPluginData();
@@ -350,7 +391,7 @@ namespace RainbowMage.OverlayPlugin
                 }
             }
 
-            logOutputWriteLineFunc.Invoke(logOutput, new object[] { (int)ID, DateTime.Now, line });
+            logOutputWriteLineFunc.Invoke(logOutput, new object[] { (int)ID, timestamp, line });
 
             return true;
         }
