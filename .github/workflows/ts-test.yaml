@@ -6,10 +6,10 @@ jobs:
   test:
     strategy:
       matrix:
-        node: ['14', '16', '18']
+        node: ['16', '18']
     runs-on: ubuntu-latest
 
-    name: Node ${{ matrix.node }}
+    name: Test ${{ matrix.node }}
 
     steps:
       - uses: actions/checkout@v2
