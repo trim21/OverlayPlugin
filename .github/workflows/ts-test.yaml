@@ -1,4 +1,4 @@
-name: CI
+name: TypeScript CI
 
 on: [pull_request, push]
 
@@ -6,7 +6,7 @@ jobs:
   test:
     strategy:
       matrix:
-        node-version: ['14', '16', '18']
+        node: ['14', '16', '18']
     runs-on: ubuntu-latest
 
     name: Node ${{ matrix.node }}
@@ -17,7 +17,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '${{ matrix.node }}'
           cache: 'yarn'
 
       - run: yarn
