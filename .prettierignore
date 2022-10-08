@@ -7,3 +7,4 @@ Thirdparty/
 dist/
 docs/
 **/*.md
+translations.json
