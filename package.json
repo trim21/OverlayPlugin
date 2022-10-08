@@ -1,0 +1,34 @@
+{
+  "name": "overlay-plugin",
+  "version": "0.0.0",
+  "type": "module",
+  "types": "./types/index.d.ts",
+  "main": "./lib/index.js",
+  "files": [
+    "dist/",
+    "lib/",
+    "types/",
+    "global.d.ts"
+  ],
+  "prettier": {
+    "tabWidth": 2,
+    "semi": true,
+    "trailingComma": "all",
+    "printWidth": 120,
+    "singleQuote": true,
+    "endOfLine": "lf"
+  },
+  "scripts": {
+    "format": "prettier -w ./",
+    "prebuild": "rimraf dist/",
+    "test": "npx tsc && node dist/test.js",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "ts-loader": "^9.4.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {}
+}

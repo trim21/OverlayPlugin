@@ -1,0 +1,10 @@
+OverlayPlugin.sln/
+OverlayPlugin/
+OverlayPlugin.Common/
+OverlayPlugin.Core/
+OverlayPlugin.Updater/
+Thirdparty/
+dist/
+docs/
+.github/
+**/*.md

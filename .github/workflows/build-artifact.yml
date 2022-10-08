@@ -61,7 +61,7 @@ jobs:
       - name: Run Build
         run: .\build.bat -ci
         shell: cmd
-        
+
       - name: Determine Version
         shell: pwsh
         run: |
@@ -82,7 +82,7 @@ jobs:
           cd out/Release
           mkdir tmp/
           mv OverlayPlugin/ tmp/
-          mv tmp/ OverlayPlugin/         
+          mv tmp/ OverlayPlugin/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
