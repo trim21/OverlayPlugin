@@ -1,4 +1,4 @@
-﻿using RainbowMage.OverlayPlugin.MemoryProcessors.Aggro;
+using RainbowMage.OverlayPlugin.MemoryProcessors.Aggro;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

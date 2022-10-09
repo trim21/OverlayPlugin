@@ -1,4 +1,4 @@
-﻿namespace RainbowMage.OverlayPlugin.EventSources
+namespace RainbowMage.OverlayPlugin.EventSources
 {
     partial class BuiltinEventConfigPanel
     {

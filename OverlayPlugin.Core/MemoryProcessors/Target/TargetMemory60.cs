@@ -1,4 +1,4 @@
-﻿namespace RainbowMage.OverlayPlugin.MemoryProcessors.Target
+namespace RainbowMage.OverlayPlugin.MemoryProcessors.Target
 {
     interface ITargetMemory60 : ITargetMemory { }
 

@@ -1,4 +1,4 @@
-﻿using RainbowMage.OverlayPlugin.MemoryProcessors.Combatant;
+using RainbowMage.OverlayPlugin.MemoryProcessors.Combatant;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

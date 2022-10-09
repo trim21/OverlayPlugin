@@ -1,4 +1,4 @@
-﻿namespace RainbowMage.OverlayPlugin.Controls
+namespace RainbowMage.OverlayPlugin.Controls
 {
     partial class LogPanel
     {

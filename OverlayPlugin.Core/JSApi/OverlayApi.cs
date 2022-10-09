@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Advanced_Combat_Tracker;
 using RainbowMage.HtmlRenderer;

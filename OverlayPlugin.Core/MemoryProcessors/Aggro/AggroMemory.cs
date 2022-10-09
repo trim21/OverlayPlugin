@@ -1,4 +1,4 @@
-﻿using RainbowMage.OverlayPlugin.MemoryProcessors.Combatant;
+using RainbowMage.OverlayPlugin.MemoryProcessors.Combatant;
 using RainbowMage.OverlayPlugin.MemoryProcessors.Enmity;
 using RainbowMage.OverlayPlugin.MemoryProcessors.Target;
 using System;
