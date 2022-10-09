@@ -7,8 +7,7 @@
   "files": [
     "dist/",
     "lib/",
-    "types/",
-    "global.d.ts"
+    "types/"
   ],
   "prettier": {
     "tabWidth": 2,
