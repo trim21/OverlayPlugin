@@ -6,7 +6,8 @@ using System.Runtime.InteropServices;
 
 namespace RainbowMage.OverlayPlugin.MemoryProcessors.Enmity
 {
-    public abstract class EnmityMemory : IEnmityMemory {
+    public abstract class EnmityMemory : IEnmityMemory
+    {
         private FFXIVMemory memory;
         private ILogger logger;
         private ICombatantMemory combatantMemory;
@@ -78,6 +79,8 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors.Enmity
             logger.Log(LogLevel.Error, $"Failed to find enmity memory via {GetType().Name}: {string.Join(", ", fail)}.");
             return;
         }
+
+        public abstract Version GetVersion();
 
         [StructLayout(LayoutKind.Explicit, Size = Size)]
         struct MemoryEnmityListEntry

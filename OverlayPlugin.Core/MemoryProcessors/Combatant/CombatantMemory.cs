@@ -5,7 +5,8 @@ using System.Runtime.InteropServices;
 
 namespace RainbowMage.OverlayPlugin.MemoryProcessors.Combatant
 {
-    public abstract class CombatantMemory : ICombatantMemory {
+    public abstract class CombatantMemory : ICombatantMemory
+    {
         private FFXIVMemory memory;
         private ILogger logger;
 
@@ -89,6 +90,8 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors.Combatant
             logger.Log(LogLevel.Error, $"Failed to find combatant memory via {GetType().Name}: {string.Join(",", fail)}.");
             return;
         }
+
+        public abstract Version GetVersion();
 
         public Combatant GetSelfCombatant()
         {

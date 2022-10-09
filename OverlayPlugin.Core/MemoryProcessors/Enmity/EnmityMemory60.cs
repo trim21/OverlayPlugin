@@ -1,6 +1,8 @@
-﻿namespace RainbowMage.OverlayPlugin.MemoryProcessors.Enmity
+﻿using System;
+
+namespace RainbowMage.OverlayPlugin.MemoryProcessors.Enmity
 {
-    interface IEnmityMemory60 : IEnmityMemory {}
+    interface IEnmityMemory60 : IEnmityMemory { }
 
     class EnmityMemory60 : EnmityMemory, IEnmityMemory60
     {
@@ -10,5 +12,10 @@
         public EnmityMemory60(TinyIoCContainer container)
             : base(container, enmitySignature, enmitySignatureOffset)
         { }
+
+        public override Version GetVersion()
+        {
+            return new Version(6, 0);
+        }
     }
 }

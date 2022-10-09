@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace RainbowMage.OverlayPlugin.MemoryProcessors.Combatant
 {
-    interface ICombatantMemory62 : ICombatantMemory {}
+    interface ICombatantMemory62 : ICombatantMemory { }
 
     class CombatantMemory62 : CombatantMemory, ICombatantMemory62
     {
@@ -13,8 +13,14 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors.Combatant
         public CombatantMemory62(TinyIoCContainer container)
             : base(container, charmapSignature, CombatantMemory.Size, EffectMemory.Size)
         {
-            
+
         }
+
+        public override Version GetVersion()
+        {
+            return new Version(6, 2);
+        }
+
         // Returns a combatant if the combatant is a mob or a PC.
         protected override unsafe Combatant GetMobFromByteArray(byte[] source, uint mycharID)
         {

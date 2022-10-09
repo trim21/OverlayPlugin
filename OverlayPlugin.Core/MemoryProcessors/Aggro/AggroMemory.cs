@@ -8,7 +8,8 @@ using System.Runtime.InteropServices;
 
 namespace RainbowMage.OverlayPlugin.MemoryProcessors.Aggro
 {
-    public abstract class AggroMemory : IAggroMemory {
+    public abstract class AggroMemory : IAggroMemory
+    {
         private FFXIVMemory memory;
         private ILogger logger;
         private ICombatantMemory combatantMemory;
@@ -82,6 +83,8 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors.Aggro
             logger.Log(LogLevel.Error, $"Failed to find aggro memory via {GetType().Name}: {string.Join(",", fail)}.");
             return;
         }
+
+        public abstract Version GetVersion();
 
         [StructLayout(LayoutKind.Explicit, Size = Size)]
         struct MemoryAggroListEntry
@@ -202,6 +205,5 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors.Aggro
             }
             return result;
         }
-
     }
 }

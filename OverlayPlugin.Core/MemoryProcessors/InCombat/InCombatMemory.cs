@@ -4,7 +4,8 @@ using System.Diagnostics;
 
 namespace RainbowMage.OverlayPlugin.MemoryProcessors.InCombat
 {
-    public abstract class InCombatMemory {
+    public abstract class InCombatMemory
+    {
         protected FFXIVMemory memory;
         protected ILogger logger;
 
@@ -79,6 +80,8 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors.InCombat
             logger.Log(LogLevel.Error, $"Failed to find in combat memory via {GetType().Name}: {string.Join(", ", fail)}.");
             return;
         }
+
+        public abstract Version GetVersion();
 
         public bool GetInCombat()
         {

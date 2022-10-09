@@ -4,7 +4,8 @@ using System.Diagnostics;
 
 namespace RainbowMage.OverlayPlugin.MemoryProcessors.EnmityHud
 {
-    public abstract class EnmityHudMemory : IEnmityHudMemory {
+    public abstract class EnmityHudMemory : IEnmityHudMemory
+    {
         private FFXIVMemory memory;
         private ILogger logger;
 
@@ -88,6 +89,8 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors.EnmityHud
             logger.Log(LogLevel.Error, $"Failed to find enmity HUD memory via {GetType().Name}: {string.Join(", ", fail)}.");
             return;
         }
+
+        public abstract Version GetVersion();
 
         private bool GetDynamicPointerAddress()
         {

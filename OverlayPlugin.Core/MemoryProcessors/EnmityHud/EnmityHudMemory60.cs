@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace RainbowMage.OverlayPlugin.MemoryProcessors.EnmityHud
 {
-    interface IEnmityHudMemory60 : IEnmityHudMemory {}
+    interface IEnmityHudMemory60 : IEnmityHudMemory { }
 
     class EnmityHudMemory60 : EnmityHudMemory, IEnmityHudMemory60
     {
@@ -17,6 +17,11 @@ namespace RainbowMage.OverlayPlugin.MemoryProcessors.EnmityHud
         public EnmityHudMemory60(TinyIoCContainer container)
             : base(container, enmityHudSignature, enmityHudPointerPath, enmityHudCountOffset, enmityHudEntryOffset, EnmityHudEntryMemory.Size)
         { }
+
+        public override Version GetVersion()
+        {
+            return new Version(6, 0);
+        }
 
         [StructLayout(LayoutKind.Explicit, Size = Size)]
         struct EnmityHudEntryMemory
