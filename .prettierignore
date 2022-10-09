@@ -5,6 +5,9 @@ OverlayPlugin.Core/
 OverlayPlugin.Updater/
 Thirdparty/
 dist/
+out/
+HtmlRenderer/
+AddonExample/
 docs/
 **/*.md
 translations.json
